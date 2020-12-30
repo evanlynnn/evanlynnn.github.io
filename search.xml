@@ -4,7 +4,84 @@
   
     
     <entry>
-      <title>蓝桥杯经验分享</title>
+      <title>循环队列</title>
+      <link href="/2020/12/30/circular-queue/"/>
+      <url>/2020/12/30/circular-queue/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况————存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。<br><img src="pic1.png" alt="假溢出"></p><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了更合理的利用空间，人们想了一个办法：将队列的首尾相连接。这样当rear移动到MAXSIZE时，会再从0开始循环。那当什么时候队列满呢？当rear等于front的时候。可是队列为空的时候也是同样的条件，那不就没法判断了吗？又有人提出了这样的想法：牺牲一个存储空间，front前面不存数据，当rear在front前面的时候就是满了，如图<br><img src="pic2.png" alt="循环队列"><br><strong>front指针</strong>：指向队首元素<br><strong>rear指针</strong>：指向入队元素要插入的位置<br><strong>队空条件</strong>：rear == front<br><strong>队满条件</strong>：（rear + 1）== front</p><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>基本操作有：入队、出队<br>假设MAXSIZE为循环队列存储空间大小</p><h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><p>先判断是否队满，然后入队（先插入元素，然后rear指针+1，再取模）。</p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The Queue is full."</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>    rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><p>先判断是否队空，然后front指针+1， 再取模。</p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">int</span> ret_val <span class="token operator">=</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>    front <span class="token operator">=</span> <span class="token punctuation">(</span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>    <span class="token keyword">return</span> ret_val<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><p>c++面向对象忘记怎么写了，写得很烂~</p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifndef</span> CIRCULAR_QUEUE_H</span><span class="token macro property">#<span class="token directive keyword">define</span> CIRCULAR_QUEUE_H</span><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span><span class="token keyword">const</span> <span class="token keyword">int</span> MAXSIZE <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token keyword">class</span> <span class="token class-name">CircularQueue</span> <span class="token punctuation">{</span>   <span class="token keyword">private</span><span class="token operator">:</span>    <span class="token keyword">int</span> front<span class="token punctuation">;</span>    <span class="token keyword">int</span> rear<span class="token punctuation">;</span>    <span class="token keyword">int</span><span class="token operator">*</span> data<span class="token punctuation">;</span>   <span class="token keyword">public</span><span class="token operator">:</span>    <span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token operator">~</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The Queue is full."</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>            <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>        rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">int</span> <span class="token function">get_front</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">int</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">int</span> ret_val <span class="token operator">=</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>        front <span class="token operator">=</span> <span class="token punctuation">(</span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>        <span class="token keyword">return</span> ret_val<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>CircularQueue<span class="token operator">::</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* args */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">}</span>CircularQueue<span class="token operator">::</span><span class="token operator">~</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">delete</span> data<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构复习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>链表(未完待续~)</title>
+      <link href="/2020/12/30/linked-list/"/>
+      <url>/2020/12/30/linked-list/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>线性表和链表是两种基本的数据结构，他们各有各的优势。<br><strong>线性表的优点</strong>：可以随机存取、存储密度高。<br><strong>链表的优点</strong>：插入和删除操作不需要移动元素、可以动态分配存储空间。</p><h2 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h2><h3 id="一、组成"><a href="#一、组成" class="headerlink" title="一、组成"></a>一、组成</h3><p><strong>数据域 + 指针域</strong></p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> LNode<span class="token punctuation">{</span>    ElemType data<span class="token punctuation">;</span>    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>next<span class="token punctuation">;</span><span class="token punctuation">}</span>LNode<span class="token punctuation">,</span> <span class="token operator">*</span>LinkList<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="二、几个概念"><a href="#二、几个概念" class="headerlink" title="二、几个概念"></a>二、几个概念</h3><p><strong>头结点</strong>：在第一个结点（首元结点）前附设的一个结点。其指针域指向第一个结点，数据域可以存储链表长度等附加信息。<br><img src="pic1.jpg" alt="带头结点的链表"><br><strong>首元结点</strong>：存储第一个元素的结点。如上图的”HELLO”结点。<br><strong>头指针</strong>：指向链表第一个结点（若有头结点，则为头结点）的指针。</p><h3 id="三、基本操作"><a href="#三、基本操作" class="headerlink" title="三、基本操作"></a>三、基本操作</h3><p>链表的基本操作有：查找、插入、删除等</p><h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>链表的插入</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构复习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法分析(未完待续~)</title>
+      <link href="/2020/12/30/growth-of-function/"/>
+      <url>/2020/12/30/growth-of-function/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构复习 </category>
+          
+          <category> 编程算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>蓝桥杯经验分享(未完待续~)</title>
       <link href="/2020/12/28/lanqiao-prepare/"/>
       <url>/2020/12/28/lanqiao-prepare/</url>
       
@@ -39,6 +116,8 @@
       <categories>
           
           <category> 编程算法 </category>
+          
+          <category> 数据结构复习 </category>
           
       </categories>
       

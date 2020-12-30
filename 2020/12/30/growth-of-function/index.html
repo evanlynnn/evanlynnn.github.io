@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="荷兰国旗问题, EvanLynn 博客 blog">
+    <meta name="keywords" content="算法分析(未完待续~), EvanLynn 博客 blog">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="题目描述现有n各红白蓝三种不同颜色的小球，乱序排列在一起，请通过两两交换任意两个小球，使得从左至右，依次是一些红球、一些白球、一些蓝球。红白蓝分别编号为0、1、2LeetCode:https://leetcode-cn.com/proble">
+    <meta name="description" content="概述">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>荷兰国旗问题 | Evan Lynn&#39;s Blog</title>
+    <title>算法分析(未完待续~) | Evan Lynn&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -335,7 +335,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        荷兰国旗问题
+                        算法分析(未完待续~)
                     </div>
                 </div>
             </div>
@@ -450,10 +450,6 @@
                             <span class="chip bg-color">算法</span>
                         </a>
                         
-                        <a href="/tags/LeetCode/" target="_blank">
-                            <span class="chip bg-color">LeetCode</span>
-                        </a>
-                        
                     </div>
                     
                 </div>
@@ -462,12 +458,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/编程算法/" class="post-category" target="_blank">
-                            编程算法
+                        <a href="/categories/数据结构复习/" class="post-category" target="_blank">
+                            数据结构复习
                         </a>
                         
-                        <a href="/categories/编程算法/数据结构复习/" class="post-category" target="_blank">
-                            数据结构复习
+                        <a href="/categories/数据结构复习/编程算法/" class="post-category" target="_blank">
+                            编程算法
                         </a>
                         
                     </div>
@@ -478,7 +474,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-26
+                    2020-12-30
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -492,14 +488,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    640
+                    2
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
                 
@@ -515,78 +511,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现有n各红白蓝三种不同颜色的小球，乱序排列在一起，请通过两两交换任意两个小球，使得从左至右，依次是一些红球、一些白球、一些蓝球。<br>红白蓝分别编号为0、1、2<br>LeetCode:<a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sort-colors/</a></p>
-<h2 id="分析与解法"><a href="#分析与解法" class="headerlink" title="分析与解法"></a>分析与解法</h2><p>这个问题类似于排序，目标是将乱序的数组排序，划分为0、1、2三部分。<br>因为一共只有三个部分，只要前面的部分（1）和后面的部分（2）划分好，中间部分（1）就自然出来了。<br>利用三指针，我们可以经过一趟扫描就实现。时间复杂度O(n)</p>
-<h3 id="三指针"><a href="#三指针" class="headerlink" title="三指针"></a>三指针</h3><p><img src="img1.png" alt="三指针"><br>我们设三个指针：begin、current、end，其中：<br>begin指针以前的数都是0。<br>current指针指向当前待排序的数，begin和current之间的数为1。<br>end指针之后的数都是2.<br>初始状态下：begin和current都指向第一个元素（下标0），end指向最后一个元素（下标n-1）。<br>下面我开始对数组进行扫描：<br>每一次我们判断current指向的数。</p>
-<h4 id="1-current指向的数为0"><a href="#1-current指向的数为0" class="headerlink" title="1. current指向的数为0"></a>1. current指向的数为0</h4><p>0是属于前面的部分，他应该在begin指针之前。所以我们要将0移入第一部分，并将begin、current指针后移：</p>
-<pre class="line-numbers language-C++"><code class="language-C++">swap(colors[begin], colors[end]);
-begin++;
-current++;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="2-current指向的数为1"><a href="#2-current指向的数为1" class="headerlink" title="2. current指向的数为1"></a>2. current指向的数为1</h4><p>因为1是在begin和current之间，所以只需要将current后移就行，不需要交换操作。</p>
-<h4 id="3-current指向的数为2"><a href="#3-current指向的数为2" class="headerlink" title="3. current指向的数为2"></a>3. current指向的数为2</h4><p>2属于最后的部分，它应该位于end指针之后。<br>现在我们<strong>交换current和end指针指向的数</strong>，再将<strong>end指针前移</strong>，就完成了插入。<br>那current需要后移吗？<br><strong>不需要！</strong>原先end指针指向的数可能是1，也可能是0。如果为0的话，current后移会使中间部分无序。</p>
-<pre class="line-numbers language-C++"><code class="language-C++">swap(colors[current], colors[end]);
-end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//完整C++</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">int</span> n<span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> MAXN <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> colors<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/**
- * Partition the array into three sections: all-0, all-1, all-2 
- *
- */</span>
-<span class="token keyword">void</span> <span class="token function">partition</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//Let begin point to the first element, and end point to the last element.</span>
-    <span class="token keyword">int</span> begin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> current <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> end <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>current <span class="token operator">&lt;=</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">swap</span><span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span><span class="token punctuation">,</span> colors<span class="token punctuation">[</span>begin<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            begin<span class="token operator">++</span><span class="token punctuation">;</span>
-            current<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">swap</span><span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span><span class="token punctuation">,</span> colors<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            end<span class="token operator">--</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            current<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        cin <span class="token operator">>></span> colors<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">partition</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        cout <span class="token operator">&lt;&lt;</span> colors<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//LeetCode</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">void</span> <span class="token function">sortColors</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> begin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> end <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>cur <span class="token operator">&lt;=</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>begin<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                begin<span class="token operator">++</span><span class="token punctuation">;</span>
-                cur<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                cur<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                end<span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2>
             </div>
             <hr />
 
@@ -744,9 +669,9 @@ end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《荷兰国旗问题》
+                    《算法分析(未完待续~)》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/26/holland-flag/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/30/growth-of-function/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Evan Lynn
             </a> 采用
@@ -787,7 +712,7 @@ end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
         repo: 'evanlynnn.github.io',
         owner: 'evanlynnn',
         admin: "evanlynnn",
-        id: '2020/12/26/holland-flag/',
+        id: '2020/12/30/growth-of-function/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1074,6 +999,55 @@ end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/12/30/linked-list/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="链表(未完待续~)">
+                        
+                        <span class="card-title">链表(未完待续~)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文演示了单链表的插入、删除等操作，以及循环链表的操作。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/数据结构复习/" class="post-category" target="_blank">
+                                    数据结构复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/12/28/lanqiao-prepare/">
                     <div class="card-image">
                         
@@ -1090,9 +1064,9 @@ end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1110,59 +1084,6 @@ end--;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
                     
                     <a href="/tags/算法/" target="_blank">
                         <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/16/sort-algorithms/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="十大经典排序算法整理汇总（附代码）">
-                        
-                        <span class="card-title">十大经典排序算法整理汇总（附代码）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            本文整理并总结了十大经典的排序算法（冒泡排序、选择排序、插入排序、快速排序、归并排序、希尔排序、计数排序、基数排序、桶排序、堆排序）的时间复杂度、空间复杂度等性质。
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/编程算法/" class="post-category" target="_blank">
-                                    编程算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/LeetCode/" target="_blank">
-                        <span class="chip bg-color">LeetCode</span>
                     </a>
                     
                 </div>
