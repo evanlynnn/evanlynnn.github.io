@@ -1,3 +1,4 @@
+http://blog.evanlynn.site/2020/12/30/postfix-notation/
 http://blog.evanlynn.site/2020/12/30/circular-queue/
 http://blog.evanlynn.site/2020/12/30/linked-list/
 http://blog.evanlynn.site/2020/12/30/growth-of-function/

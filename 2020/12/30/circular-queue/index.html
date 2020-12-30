@@ -8,8 +8,8 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="概述由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况————存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。
-实现原理由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了">
+    <meta name="description" content="概述由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况——存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。
+实现原理由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了更合">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -508,7 +508,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况————存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。<br><img src="pic1.png" alt="假溢出"></p>
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况——存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。<br><img src="pic1.png" alt="假溢出"></p>
 <h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了更合理的利用空间，人们想了一个办法：将队列的首尾相连接。这样当rear移动到MAXSIZE时，会再从0开始循环。那当什么时候队列满呢？当rear等于front的时候。可是队列为空的时候也是同样的条件，那不就没法判断了吗？又有人提出了这样的想法：牺牲一个存储空间，front前面不存数据，当rear在front前面的时候就是满了，如图<br><img src="pic2.png" alt="循环队列"><br><strong>front指针</strong>：指向队首元素<br><strong>rear指针</strong>：指向入队元素要插入的位置<br><strong>队空条件</strong>：rear == front<br><strong>队满条件</strong>：（rear + 1）== front</p>
 <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>基本操作有：入队、出队<br>假设MAXSIZE为循环队列存储空间大小</p>
 <h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><p>先判断是否队满，然后入队（先插入元素，然后rear指针+1，再取模）。</p>
@@ -1065,30 +1065,29 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/12/30/circular-queue/">
+                <a href="/2020/12/30/postfix-notation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="循环队列">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="后缀表达式">
                         
-                        <span class="card-title">循环队列</span>
+                        <span class="card-title">后缀表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文主要说明了循环队列的实现原理，以及循环队列的基本操作。
+                            本文说明了如何将中缀表达式转换成后缀表达式。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1101,12 +1100,11 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数据结构/" target="_blank">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
@@ -1329,7 +1327,7 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">3.3k</span>
+            <span class="white-color">3.8k</span>
             
 
             <br>

@@ -4,13 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="蓝桥杯经验分享(未完待续~), EvanLynn 博客 blog">
+    <meta name="keywords" content="后缀表达式, EvanLynn 博客 blog">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="比赛结束都快两个月了，总算想起来写这篇博客，害。
-获奖经历十一届蓝桥杯软件类（国赛） 三等奖
-为什么参加蓝桥杯？一方面想证明自己，另一方面也为了在大学里有个奔头。大一，我进入了一个我不是很感兴趣的专业——电子信息工程。这个专业太偏硬件了，而">
+    <meta name="description" content="前言生活中，我们常用的数学表达式a + b称为中缀表达式——运算符在两个数字中间，但是计算机处理中缀表达式的效率很低。举个例子：
+表达式：a + b * c + d由于计算机是从左向右扫描表达式，根据运算法则，第一次扫描执行b * c，然后">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>蓝桥杯经验分享(未完待续~) | Evan Lynn&#39;s Blog</title>
+    <title>后缀表达式 | Evan Lynn&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -331,13 +330,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        蓝桥杯经验分享(未完待续~)
+                        后缀表达式
                     </div>
                 </div>
             </div>
@@ -460,8 +459,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/经验分享/" class="post-category" target="_blank">
-                            经验分享
+                        <a href="/categories/数据结构复习/" class="post-category" target="_blank">
+                            数据结构复习
                         </a>
                         
                     </div>
@@ -472,7 +471,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-28
+                    2020-12-30
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -486,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    306
+                    440
                 </div>
                 
 
@@ -509,10 +508,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>比赛结束都快两个月了，总算想起来写这篇博客，害。</p>
-<h2 id="获奖经历"><a href="#获奖经历" class="headerlink" title="获奖经历"></a>获奖经历</h2><p>十一届蓝桥杯软件类（国赛） 三等奖</p>
-<h2 id="为什么参加蓝桥杯？"><a href="#为什么参加蓝桥杯？" class="headerlink" title="为什么参加蓝桥杯？"></a>为什么参加蓝桥杯？</h2><p>一方面想证明自己，另一方面也为了在大学里有个奔头。<br>大一，我进入了一个我不是很感兴趣的专业——电子信息工程。这个专业太偏硬件了，而我喜欢编程更多一点，所以决心转到计算机学院（当时，选择转软件工程的主要原因是为了逃离数电、模电）。转专业也不是说转就能转的，我总得拿出点实力证明吧。<strong>于是我去知乎上搜索计算机相关竞赛，发现蓝桥杯是个不错的选择</strong>。正巧那个时候学校正在开展蓝桥杯校赛，我就去报名试试。<br>刚进入大学，我也不清楚自己想要干什么，大学四年该怎么过。蓝桥杯给了我一点方向，至少让我在短期有了一个目标————准备比赛。</p>
-<h2 id="备赛"><a href="#备赛" class="headerlink" title="备赛"></a>备赛</h2><p>备赛主要是<strong>学算法 + 刷题</strong>，学完一个算法就去找相关的题目练习，巩固知识。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>生活中，我们常用的数学表达式<em>a + b</em>称为中缀表达式——运算符在两个数字中间，但是计算机处理中缀表达式的效率很低。举个例子：</p>
+<blockquote><p>表达式：a + b <code>*</code> c + d<br>由于计算机是从左向右扫描表达式，根据运算法则，第一次扫描执行b <code>*</code> c，然后再扫描一次把结果与a相加，最后一次扫描将b相加。<br>一共扫描了三次才计算出结果，这是十分低效的！</p>
+</blockquote>
+<p>更高效的做法是将表达式转换为后缀或前缀表达式。比如后缀表达式”<em>a b +</em>“就相当于中缀表达式”<em>a + b</em>“。<br>下面将介绍如何利用栈将中缀表达式转换为后缀表达式。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>设置一个栈用于存放运算符，初始为空。</p>
+<h3 id="步骤一：从左到右扫描表达式，对于扫描到的内容进行如下操作："><a href="#步骤一：从左到右扫描表达式，对于扫描到的内容进行如下操作：" class="headerlink" title="步骤一：从左到右扫描表达式，对于扫描到的内容进行如下操作："></a>步骤一：从左到右扫描表达式，对于扫描到的内容进行如下操作：</h3><p><strong>1.扫描到的为数字</strong><br>直接将数字输出<br><strong>2.扫描到的为运算符</strong><br><strong>情况一</strong>： 若扫描到的运算符的优先级高于栈顶运算符（或栈为空），将运算符入栈。<br><strong>情况二</strong>： 扫描到的运算符优先级低于或等于栈内运算符，将栈顶所有优先级大于等于它的运算符出栈（如果遇到括号则停止出栈），然后将当前运算符入栈。<br><strong>3.若扫描到的为左括号”(“</strong><br>将左括号”(“入栈<br><strong>4.若扫描到的为右括号”)”</strong><br>将栈内运算符全部出栈，直到遇到左括号”(“</p>
+<h3 id="步骤二：扫描完成后，栈内仍剩余运算符"><a href="#步骤二：扫描完成后，栈内仍剩余运算符" class="headerlink" title="步骤二：扫描完成后，栈内仍剩余运算符"></a>步骤二：扫描完成后，栈内仍剩余运算符</h3><p>将栈内所有运算符依次出栈输出。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="pic1.png" alt="表达式转换"></p>
 
             </div>
             <hr />
@@ -671,9 +674,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《蓝桥杯经验分享(未完待续~)》
+                    《后缀表达式》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/28/lanqiao-prepare/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/30/postfix-notation/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Evan Lynn
             </a> 采用
@@ -714,7 +717,7 @@
         repo: 'evanlynnn.github.io',
         owner: 'evanlynnn',
         admin: "evanlynnn",
-        id: '2020/12/28/lanqiao-prepare/',
+        id: '2020/12/30/postfix-notation/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -997,29 +1000,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/30/growth-of-function/">
+                <a href="/2020/12/30/postfix-notation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="算法分析(未完待续~)">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="后缀表达式">
                         
-                        <span class="card-title">算法分析(未完待续~)</span>
+                        <span class="card-title">后缀表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            时间复杂度是衡量算法的重要指标。本文通过几个例子，说明如何计算时间复杂度。
+                            本文说明了如何将中缀表达式转换成后缀表达式。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1032,6 +1036,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1050,24 +1055,24 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/26/holland-flag/">
+                <a href="/2020/12/30/circular-queue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="荷兰国旗问题">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="循环队列">
                         
-                        <span class="card-title">荷兰国旗问题</span>
+                        <span class="card-title">循环队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文分析了荷兰国旗问题的解题思路，希望借此准备数据结构考试。
+                            本文主要说明了循环队列的实现原理，以及循环队列的基本操作。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
                             </span>
                         <span class="publish-author">
                             
@@ -1084,12 +1089,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/LeetCode/" target="_blank">
-                        <span class="chip bg-color">LeetCode</span>
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
