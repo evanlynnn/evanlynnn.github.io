@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>字符串的模式匹配KMP</title>
+      <link href="/2020/12/31/kmp/"/>
+      <url>/2020/12/31/kmp/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模式匹配是指从原字符串中寻找模式串。<br>按照暴力匹配的方法，每次出现失配的情况，模式串的匹配都会从头开始，但是这是很低效的。而KMP算法会将模式串移动到最优位置进行匹配。如下图：<br><img src="pic1.png" alt="暴力匹配与KMP对比"><br>本文将说明下标从“1”开始的KMP算法。</p><h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><p>模式串匹配过程中，需要移动的只有模式串。下面我们深入分析模式串：<br>当匹配发生失配时，我们不需要回溯到模式串的开头，而是<strong>将模式串相等的前缀移动到相等的后缀位置上</strong>，如下图：<br><img src="pic2.png" alt="移动模式串"><br>我们定义一个数组next[]，其中next[i]表示使子串s[1..i-1]的前缀s[1…k-1]等于后缀s[i-k+1…i-1]的最大的k（前缀跟后缀可以部分重叠，但不能是s[1..i-1]本身）；如果找不到相等的前后缀，就令next[i] = 1。<br>简单来说：<strong>next[i]就是s[1…i-1]最长相等前后缀 + 1</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构复习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>后缀表达式</title>
       <link href="/2020/12/30/postfix-notation/"/>
       <url>/2020/12/30/postfix-notation/</url>
