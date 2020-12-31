@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.evanlynn.site/2020/12/26/holland-flag/</loc>
+    
+    <lastmod>2020-12-31T08:15:31.493Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.evanlynn.site/2020/12/31/kmp/</loc>
     
     <lastmod>2020-12-31T07:30:39.707Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://blog.evanlynn.site/2020/12/30/growth-of-function/</loc>
     
     <lastmod>2020-12-30T12:08:20.958Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.evanlynn.site/2020/12/26/holland-flag/</loc>
-    
-    <lastmod>2020-12-30T12:08:03.327Z</lastmod>
     
   </url>
   
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>http://blog.evanlynn.site/archives/index.html</loc>
+    <loc>http://blog.evanlynn.site/categories/index.html</loc>
     
     <lastmod>2020-12-26T00:32:29.440Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.evanlynn.site/categories/index.html</loc>
+    <loc>http://blog.evanlynn.site/archives/index.html</loc>
     
     <lastmod>2020-12-26T00:32:29.440Z</lastmod>
     

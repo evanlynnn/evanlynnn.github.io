@@ -512,7 +512,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现有n各红白蓝三种不同颜色的小球，乱序排列在一起，请通过两两交换任意两个小球，使得从左至右，依次是一些红球、一些白球、一些蓝球。<br>红白蓝分别编号为0、1、2<br>LeetCode:<a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sort-colors/</a></p>
-<h2 id="分析与解法"><a href="#分析与解法" class="headerlink" title="分析与解法"></a>分析与解法</h2><p>这个问题类似于排序，目标是将乱序的数组排序，划分为0、1、2三部分。<br>因为一共只有三个部分，只要前面的部分（1）和后面的部分（2）划分好，中间部分（1）就自然出来了。<br>利用三指针，我们可以经过一趟扫描就实现。时间复杂度O(n)</p>
+<h2 id="分析与解法"><a href="#分析与解法" class="headerlink" title="分析与解法"></a>分析与解法</h2><p>这个问题类似于排序，目标是将乱序的数组排序，划分为0、1、2三部分。<br>因为一共只有三个部分，只要前面的部分（1）和后面的部分（2）划分好，中间部分（1）就自然出来了。<br>利用三指针，我们可以经过一趟扫描就实现。时间复杂度O（n）</p>
 <h3 id="三指针"><a href="#三指针" class="headerlink" title="三指针"></a>三指针</h3><p><img src="img1.png" alt="三指针"><br>我们设三个指针：begin、current、end，其中：<br>begin指针以前的数都是0。<br>current指针指向当前待排序的数，begin和current之间的数为1。<br>end指针之后的数都是2.<br>初始状态下：begin和current都指向第一个元素（下标0），end指向最后一个元素（下标n-1）。<br>下面我开始对数组进行扫描：<br>每一次我们判断current指向的数。</p>
 <h4 id="1-current指向的数为0"><a href="#1-current指向的数为0" class="headerlink" title="1. current指向的数为0"></a>1. current指向的数为0</h4><p>0是属于前面的部分，他应该在begin指针之前。所以我们要将0移入第一部分，并将begin、current指针后移：</p>
 <pre class="line-numbers language-C++"><code class="language-C++">swap(colors[begin], colors[end]);
