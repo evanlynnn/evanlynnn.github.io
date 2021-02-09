@@ -4,6 +4,5 @@ http://blog.evanlynn.site/2020/12/30/postfix-notation/
 http://blog.evanlynn.site/2020/12/30/circular-queue/
 http://blog.evanlynn.site/2020/12/30/linked-list/
 http://blog.evanlynn.site/2020/12/30/growth-of-function/
-http://blog.evanlynn.site/2020/12/28/lanqiao-prepare/
 http://blog.evanlynn.site/2020/12/26/holland-flag/
 http://blog.evanlynn.site/2020/02/16/sort-algorithms/
