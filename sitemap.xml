@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.evanlynn.site/2021/02/12/matlab-syntax/</loc>
+    
+    <lastmod>2021-02-14T14:24:13.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.evanlynn.site/2021/02/14/neural-networks/</loc>
+    
+    <lastmod>2021-02-14T14:22:47.467Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.evanlynn.site/2021/01/08/bomb-lab/</loc>
     
     <lastmod>2021-01-08T06:23:41.934Z</lastmod>

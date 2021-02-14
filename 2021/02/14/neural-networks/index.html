@@ -4,12 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="循环队列, EvanLynn 博客 blog">
+    <meta name="keywords" content="Neural Networks, EvanLynn 博客 blog">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="概述由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况——存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。
-实现原理由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了更合">
+    <meta name="description" content="MotivationsNon-Linear ClassificationExampleWhen we have lots of features, like:$$x_1 = size, \ x_2 = bedrooms, \ x_3 = f">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>循环队列 | Evan Lynn&#39;s Blog</title>
+    <title>Neural Networks | Evan Lynn&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -330,13 +329,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        循环队列
+                        Neural Networks
                     </div>
                 </div>
             </div>
@@ -447,8 +446,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/数据结构/" target="_blank">
-                            <span class="chip bg-color">数据结构</span>
+                        <a href="/tags/Neural-Networks/" target="_blank">
+                            <span class="chip bg-color">Neural Networks</span>
                         </a>
                         
                     </div>
@@ -459,8 +458,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/数据结构复习/" class="post-category" target="_blank">
-                            数据结构复习
+                        <a href="/categories/ML/" class="post-category" target="_blank">
+                            ML
                         </a>
                         
                     </div>
@@ -471,7 +470,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-30
+                    2021-02-14
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -485,14 +484,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    521
+                    141
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
                 
@@ -508,79 +507,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于队列“队首出队，队尾入队”的特点，固定大小的顺序队列会出现“假溢出”的情况——存储区还未满，但队列却显示溢出。循环队列的出现解决了假溢出问题。<br><img src="pic1.png" alt="假溢出"></p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>由于队列有元素出列，front就向后移动，所以队列前面的空间就空了出来。为了更合理的利用空间，人们想了一个办法：将队列的首尾相连接。这样当rear移动到MAXSIZE时，会再从0开始循环。那当什么时候队列满呢？当rear等于front的时候。可是队列为空的时候也是同样的条件，那不就没法判断了吗？又有人提出了这样的想法：牺牲一个存储空间，front前面不存数据，当rear在front前面的时候就是满了，如图<br><img src="pic2.png" alt="循环队列"><br><strong>front指针</strong>：指向队首元素<br><strong>rear指针</strong>：指向入队元素要插入的位置<br><strong>队空条件</strong>：rear == front<br><strong>队满条件</strong>：（rear + 1）% MAXSIZE == front</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>基本操作有：入队、出队<br>假设MAXSIZE为循环队列存储空间大小</p>
-<h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><p>先判断是否队满，然后入队（先插入元素，然后rear指针+1，再取模）。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The Queue is full."</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>
-    rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><p>先判断是否队空，然后front指针+1， 再取模。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> ret_val <span class="token operator">=</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    front <span class="token operator">=</span> <span class="token punctuation">(</span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> ret_val<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><p>c++面向对象忘记怎么写了，写得很烂~</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifndef</span> CIRCULAR_QUEUE_H</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> CIRCULAR_QUEUE_H</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> MAXSIZE <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-<span class="token keyword">class</span> <span class="token class-name">CircularQueue</span> <span class="token punctuation">{</span>
-   <span class="token keyword">private</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> front<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> rear<span class="token punctuation">;</span>
-    <span class="token keyword">int</span><span class="token operator">*</span> data<span class="token punctuation">;</span>
-
-   <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">~</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The Queue is full."</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>
-        rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> <span class="token function">get_front</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>rear <span class="token operator">==</span> front<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Empty Queue!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">int</span> ret_val <span class="token operator">=</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        front <span class="token operator">=</span> <span class="token punctuation">(</span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAXSIZE<span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ret_val<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-CircularQueue<span class="token operator">::</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* args */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-CircularQueue<span class="token operator">::</span><span class="token operator">~</span><span class="token function">CircularQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">delete</span> data<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
-<span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Motivations"><a href="#Motivations" class="headerlink" title="Motivations"></a>Motivations</h1><h2 id="Non-Linear-Classification"><a href="#Non-Linear-Classification" class="headerlink" title="Non-Linear Classification"></a>Non-Linear Classification</h2><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>When we have lots of features, like:<br>$$<br>x_1 = size, \ x_2 = bedrooms, \ x_3 = floors, \ x_4 = age, \cdots, x_{100}<br>$$<br>It’s hard to create polynomial hypothesis, since we need to create like that:<br>$$<br>x_1^2+x_1x_2+x_1x_3+\cdots x_1x_{100}+x_2^2+x_2x_3+\cdots<br>$$<br> almost 5000 features, O(n^2). And it too expensive to compute.</p>
+<h2 id="Neurons-and-the-Brain"><a href="#Neurons-and-the-Brain" class="headerlink" title="Neurons and the Brain"></a>Neurons and the Brain</h2><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>Origins: Algorithms that try to mimic the brain.</p>
+<p>Widely used in 80s and early 90s.</p>
+<p>Recent resurgence: State-of-the-art technique for many applications.</p>
+<h3 id="The-“one-learning-algorithm”-hypothesis"><a href="#The-“one-learning-algorithm”-hypothesis" class="headerlink" title="The “one learning algorithm” hypothesis"></a>The “one learning algorithm” hypothesis</h3><p>Our brain share one learning algorithm. When cut the wire from the ears to  the auditory cortex and re-wire the eyes to it, then the animal can use auditory cortex to see.</p>
+<p><img src="rewire.png" alt="re-wire"></p>
+<p><strong>One tissue can process sight or sound or touch, then one learning algorithm can process those things</strong></p>
+<h3 id="Other-Applications"><a href="#Other-Applications" class="headerlink" title="Other Applications"></a>Other Applications</h3><p><img src="application.png" alt="applications"></p>
 
             </div>
             <hr />
@@ -739,9 +673,9 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《循环队列》
+                    《Neural Networks》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/30/circular-queue/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/02/14/neural-networks/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Evan Lynn
             </a> 采用
@@ -782,7 +716,7 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
         repo: 'evanlynnn.github.io',
         owner: 'evanlynnn',
         admin: "evanlynnn",
-        id: '2020/12/30/circular-queue/',
+        id: '2021/02/14/neural-networks/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1065,46 +999,48 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/30/postfix-notation/">
+                <a href="/2021/02/14/neural-networks/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="后缀表达式">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Neural Networks">
                         
-                        <span class="card-title">后缀表达式</span>
+                        <span class="card-title">Neural Networks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文说明了如何将中缀表达式转换成后缀表达式。
+                            This is my note about neural network based on Machine Learning by Stanford University.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据结构复习/" class="post-category" target="_blank">
-                                    数据结构复习
+                            <a href="/categories/ML/" class="post-category" target="_blank">
+                                    ML
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/Neural-Networks/" target="_blank">
+                        <span class="chip bg-color">Neural Networks</span>
                     </a>
                     
                 </div>
@@ -1118,31 +1054,31 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/30/linked-list/">
+                <a href="/2021/02/12/matlab-syntax/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="链表(未完待续~)">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="MATLAB Syntax">
                         
-                        <span class="card-title">链表(未完待续~)</span>
+                        <span class="card-title">MATLAB Syntax</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文演示了单链表的插入、删除等操作，以及循环链表的操作。
+                            Record the use of MATLAB during my ML Learning.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-30
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据结构复习/" class="post-category" target="_blank">
-                                    数据结构复习
+                            <a href="/categories/MATLAB/" class="post-category" target="_blank">
+                                    MATLAB
                                 </a>
                             
                             
@@ -1152,8 +1088,8 @@ CircularQueue<span class="token operator">::</span><span class="token operator">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数据结构/" target="_blank">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/syntax/" target="_blank">
+                        <span class="chip bg-color">syntax</span>
                     </a>
                     
                 </div>

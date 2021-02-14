@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.evanlynn.site/"/>
-  <updated>2021-01-08T06:23:41.934Z</updated>
+  <updated>2021-02-14T14:22:47.467Z</updated>
   <id>http://blog.evanlynn.site/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Neural Networks</title>
+    <link href="http://blog.evanlynn.site/2021/02/14/neural-networks/"/>
+    <id>http://blog.evanlynn.site/2021/02/14/neural-networks/</id>
+    <published>2021-02-14T14:07:01.000Z</published>
+    <updated>2021-02-14T14:22:47.467Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Motivations&quot;&gt;&lt;a href=&quot;#Motivations&quot; class=&quot;headerlink&quot; title=&quot;Motivations&quot;&gt;&lt;/a&gt;Motivations&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="http://blog.evanlynn.site/categories/ML/"/>
+    
+    
+      <category term="Neural Networks" scheme="http://blog.evanlynn.site/tags/Neural-Networks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB Syntax</title>
+    <link href="http://blog.evanlynn.site/2021/02/12/matlab-syntax/"/>
+    <id>http://blog.evanlynn.site/2021/02/12/matlab-syntax/</id>
+    <published>2021-02-12T13:38:51.000Z</published>
+    <updated>2021-02-14T14:24:13.092Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Constant&quot;&gt;&lt;a href=&quot;#Constant&quot; class=&quot;headerlink&quot; title=&quot;Constant&quot;&gt;&lt;/a&gt;Constant&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;$e^x$: exp（）&lt;/li&gt;
+&lt;li&gt;$\pi$:
+        
+      
+    
+    </summary>
+    
+      <category term="MATLAB" scheme="http://blog.evanlynn.site/categories/MATLAB/"/>
+    
+    
+      <category term="syntax" scheme="http://blog.evanlynn.site/tags/syntax/"/>
+    
+  </entry>
   
   <entry>
     <title>CSAPP实验：Bomb Lab</title>
