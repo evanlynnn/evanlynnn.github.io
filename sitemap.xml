@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.evanlynn.site/2021/02/28/online-course/</loc>
+    
+    <lastmod>2021-02-28T08:03:30.460Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.evanlynn.site/2021/02/21/11th-a/</loc>
     
-    <lastmod>2021-02-21T15:06:08.457Z</lastmod>
+    <lastmod>2021-02-21T15:32:19.503Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.evanlynn.site/2021/02/14/neural-networks/</loc>
+    
+    <lastmod>2021-02-21T15:09:14.670Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://blog.evanlynn.site/2021/02/12/matlab-syntax/</loc>
     
     <lastmod>2021-02-14T14:24:13.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.evanlynn.site/2021/02/14/neural-networks/</loc>
-    
-    <lastmod>2021-02-14T14:22:47.467Z</lastmod>
     
   </url>
   
@@ -114,14 +121,14 @@
   </url>
   
   <url>
-    <loc>http://blog.evanlynn.site/tags/index.html</loc>
+    <loc>http://blog.evanlynn.site/archives/index.html</loc>
     
     <lastmod>2020-12-26T00:32:29.440Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.evanlynn.site/archives/index.html</loc>
+    <loc>http://blog.evanlynn.site/tags/index.html</loc>
     
     <lastmod>2020-12-26T00:32:29.440Z</lastmod>
     
